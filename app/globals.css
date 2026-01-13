@@ -1,26 +1,31 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@import "tw-animate-css";
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: 
+    radial-gradient(at 10% 20%, #e6d4c4 0px, transparent 50%),
+    radial-gradient(at 80% 10%, #e6b4b4 0px, transparent 50%),
+    radial-gradient(at 90% 70%, #d97777 0px, transparent 50%),
+    radial-gradient(at 50% 50%, #e69494 0px, transparent 50%),
+    radial-gradient(at 20% 80%, #d98686 0px, transparent 50%),
+    radial-gradient(at 60% 90%, #d96666 0px, transparent 50%),
+    linear-gradient(135deg, #e6dac8 0%, #e69486 100%);
+  background-blend-mode: normal;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  color: #3a2a4a;
+}
+
+/* Alternative version with slightly different positioning */
+.mesh-gradient-alt {
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(255, 238, 221, 0.9) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(255, 212, 212, 0.8) 0%, transparent 45%),
+    radial-gradient(circle at 90% 65%, rgba(255, 153, 153, 0.7) 0%, transparent 40%),
+    radial-gradient(circle at 45% 55%, rgba(255, 184, 184, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 25% 75%, rgba(255, 168, 168, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 55% 85%, rgba(255, 136, 136, 0.6) 0%, transparent 40%),
+    linear-gradient(135deg, #fff5e8 0%, #ffd0c0 50%, #ffb8a8 100%);
+  min-height: 100vh;
 }
