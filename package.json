@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "export": "next export",
+    "lint": "eslint",
+    "deploy": "next build && next export"
   },
   "dependencies": {
     "@developer-hub/liquid-glass": "^1.2.3",
