@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint"
   },
   "dependencies": {
     "@developer-hub/liquid-glass": "^1.2.3",
@@ -37,3 +38,4 @@
     "typescript": "^5"
   }
 }
+
