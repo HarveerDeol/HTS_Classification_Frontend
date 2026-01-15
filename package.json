@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
     "lint": "eslint",
-    "deploy": "next build && next export"
   },
   "dependencies": {
     "@developer-hub/liquid-glass": "^1.2.3",
