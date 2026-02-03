@@ -18,32 +18,42 @@ const InputCard = ({ className, onError, errorLevel, setIsLoading, setResultData
 });
 
 
-  const handleClick = () => {
-    if (productDescription.trim() === "") {
-      if (onError) onError("Please enter a valid description");
-      if (errorLevel) errorLevel("text-yellow-400"); 
-      return;
-    }
-        
-    setIsLoading(true);
-    onError(null);
-    
-    api.post('/classify', {
-      product_description: productDescription,
-      country_of_origin: selectedCountry.slice(2).trim()
-    })
-    .then(function (response) {
-      console.log(response.data);
-      setResultData(response.data);
-      setIsLoading(false);
-    })
-    .catch(function (error) {
-      setIsLoading(false);
-      console.log(error);
-      onError(error.message);
-      errorLevel("text-red-400");
-    });
+const handleClick = async () => {
+  if (!productDescription.trim()) {
+    if (onError) onError("Please enter a valid description");
+    if (errorLevel) errorLevel("text-yellow-400"); 
+    return;
   }
+
+  setIsLoading(true);
+  onError(null);
+
+  try {
+    // Optional authentication: include token only if user is logged in
+    const idToken = localStorage.getItem("idToken");
+
+    const response = await api.post(
+      "/classify",
+      {
+        product_description: productDescription,
+        country_of_origin: selectedCountry?.slice(2).trim() || "Unknown"
+      },
+      {
+        headers: idToken ? { Authorization: `Bearer ${idToken}` } : {}
+      }
+    );
+
+    console.log("✅ Classification response:", response.data);
+    setResultData(response.data);
+  } catch (err) {
+    console.error("❌ Classification error:", err);
+    onError(err?.response?.data?.message || err.message || "An error occurred");
+    errorLevel("text-red-400");
+  } finally {
+    setIsLoading(false);
+  }
+};
+
   return (
     <div
       className={cn(
