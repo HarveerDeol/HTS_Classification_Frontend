@@ -8,7 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+#new comment
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,8 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set env vars
+        run: echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> $GITHUB_ENV
+
+
       - name: Build and export frontend
-        run: npm run deploy
+        run: npm run build
 
       - name: Configure AWS CLI
         uses: aws-actions/configure-aws-credentials@v2
